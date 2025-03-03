@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Product Listing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin - Product Listing</h1>
+        <nav><a href="/">Home</a> | <a href="/admin.html">Logout</a></nav>
+    </header>
+    <main>
+        <section class="product-list">
+            <h2>Manage Products</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productTable">
+                    <!-- Populated by JS -->
+                </tbody>
+            </table>
+            <button id="addProduct">Add New Product</button>
+        </section>
+    </main>
+    <script>
+        const products = [
+            { id: 1, name: "Premium Widget", price: 29.99, stock: 50 },
+            { id: 2, name: "Gizmo Pro", price: 49.99, stock: 20 }
+        ];
+        const tbody = document.getElementById('productTable');
+        products.forEach(p => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${p.id}</td>
+                <td>${p.name}</td>
+                <td>$${p.price.toFixed(2)}</td>
+                <td>${p.stock}</td>
+                <td><button>Edit</button> <button>Delete</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
